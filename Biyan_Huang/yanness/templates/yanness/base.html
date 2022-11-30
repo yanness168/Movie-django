@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}<title>{{title}}</title>
+    {% else %}<title>Yanness's website</title>
+    {% endif %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+<div style="margin-left: 1%; margin-top: 1%">
+    {% include "yanness/navbar.html" %}
+    {% block content %}
+        <h1 style="font-weight: bold; font-size: 25px; color: #ecc926">Welcome to Yanness's Movie World</h1>
+        <div style="margin-left: 1%; margin-right: 1%">
+            {% if movie %}
+                {% for m in movie %}
+                    <P style="font-weight: bold">Movie ID: {{ m.id}} -- <a href="/{{ m.id }}"><< {{ m.name}} >></a></P>
+                    <P style="font-style: italic">Posted By -- {{ m.posted_by }}</P>
+                    <ul>
+                        <li>Released in: {{ m.year }}</li>
+                        <li>Description: {{ m.description }}</li>
+                        <li>Posted on: {{ m.created_by }}</li>
+                        <li>Last updated at: {{ m.last_updated }}</li>
+                    </ul>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <h4>No Movie To Display...Sorry...</h4>
+            {% endif %}
+        </div>
+    {% endblock %}
+</div>
+</body>
+</html>

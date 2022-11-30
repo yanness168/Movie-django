@@ -1,0 +1,18 @@
+{%  extends 'yanness/base.html' %}
+
+
+{% block content %}
+    <h1 style="font-style: oblique; color: darkred; font-size: 25px; font-weight: bold">Warning!!</h1>
+    <div style="margin-left: 1%; margin-right: 1%">
+        Are you sure to delete <u style="font-weight: bold">{{ m.name }}</u> ?
+        <div>
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <br>
+                <input class="btn btn--main" type="submit" value="Confirm" />
+            </form>
+            <hr>
+        </div>
+    </div>
+
+{% endblock %}

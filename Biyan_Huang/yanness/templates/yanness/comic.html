@@ -1,0 +1,16 @@
+{%  extends 'yanness/base.html' %}
+
+
+{% block content %}
+    <h3>{{ title }}</h3>
+    <img src="{{ link }}">
+    <br>
+    <br>
+    <form action="/get_xkcd/" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}

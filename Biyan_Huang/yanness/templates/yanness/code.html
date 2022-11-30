@@ -1,0 +1,18 @@
+{%  extends 'yanness/base.html' %}
+
+
+{% block content %}
+    <h3>QR Code Generator</h3>
+    {% if link %}
+        <img src="{{ link }}">
+    {% endif %}
+    <br>
+    <br>
+    <form action="/get_code/" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}

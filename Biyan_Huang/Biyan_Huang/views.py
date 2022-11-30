@@ -77,6 +77,7 @@ def display_movie(request):
 
 def displayById(request, id):
     m = Movie.objects.get(id=id)
+
     return render(request, "yanness/byID.html", {"title": m.name, "item": m})
 
 

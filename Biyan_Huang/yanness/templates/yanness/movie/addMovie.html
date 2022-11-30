@@ -1,8 +1,8 @@
-{%  extends 'yanness/base.html' %}
+{%  extends 'yanness/movie/../movie/base.html' %}
 {% load widget_tweaks %}
 {% block content %}
     <main class="create-movie layout" >
-        <div class="container" style="margin: 1%">
+        <div class="container" style="margin-left: 1%; margin-right: 1%">
             <div class="layout__boxTitle">
                 <a href="/">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -14,7 +14,7 @@
                 <h3>Back</h3>
             </div>
 
-            <h1 style="font-weight: bold; font-size: 25px; color: #ecc926">Update <u style="font-style: oblique; color: black">{{ m.name }}</u></h1>
+        <h1 style="font-weight: bold; font-size: 25px; color: #ecc926">Add A Movie</h1>
         </div>
 
         <div style="margin-left: 1%; margin-right: 1%">
@@ -30,7 +30,7 @@
 
                 <div class="form__group">
                     <label for="movie_description">Movie Description</label>
-                    {% render_field form.description class="textarea" placeholder="Enter Name" rows="3" placeholder="Enter Description" %}
+                    {% render_field form.description class="textarea" rows="3" placeholder="Enter Description" %}
                 </div>
 
                 <div class="form__group">
@@ -46,6 +46,9 @@
                 <div class="form__action">
                     <button class="btn btn--main" type="submit">
                         <span>Submit</span>
+                    </button>
+                    <button class="btn btn--main" type="reset">
+                        <span>Cancel</span>
                     </button>
                 </div>
             </form>

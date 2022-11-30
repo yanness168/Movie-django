@@ -1,10 +1,10 @@
-{%  extends 'yanness/base.html' %}
+{%  extends 'yanness/movie/../movie/base.html' %}
 
 
 {% block content %}
     <h1 style="font-style: oblique; color: darkred; font-size: 25px; font-weight: bold">Warning!!</h1>
     <div style="margin: 1%">
-        Are you sure to delete <u style="font-weight: bold; font-size: 20px">{{ m.name }}</u> ?
+        Are you sure to delete your review on <u style="font-weight: bold; font-size: 20px">{{ movie.name }}</u> ?
         <div>
             <form class="form" method="POST">
                 {% csrf_token %}

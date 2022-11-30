@@ -1,5 +1,6 @@
 from django import forms
-from yanness.models import Movie
+from .models import Movie
+from .models import Review
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -27,3 +28,9 @@ class movieForm(forms.ModelForm):
     # description = forms.CharField(max_length=100000, label="Movie Description", required=False)
     # year = forms.IntegerField(min_value=1900, label="Released Year", required=False)
     # rating = forms.FloatField(min_value=0, max_value=10, label="Movie Rating", required=False)
+
+
+class reviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = "__all__"

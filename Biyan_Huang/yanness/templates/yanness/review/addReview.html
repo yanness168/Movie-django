@@ -1,0 +1,57 @@
+{%  extends 'yanness/movie/../movie/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <main class="create-movie layout" >
+        <div class="container" style="margin-left: 1%; margin-right: 1%">
+            <div class="layout__boxTitle">
+                <a href="/">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                         viewBox="0 0 32 32">
+                        <title>arrow-left</title>
+                        <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
+                    </svg>
+                </a>
+                <h3>Back</h3>
+            </div>
+
+            <h1 style="font-weight: bold; font-size: 25px; color: #ecc926">Leave A Review</h1>
+        </div>
+
+        <div style="margin-left: 1%; margin-right: 1%">
+            <form class="form" method="POST">
+                {% csrf_token %}
+
+                <!-- Display form element generated from MovieForm-->
+                <div class="form__group">
+                    <label for="movie_name">Movie Name</label>
+                    {% render_field form.movie class="input" placeholder="Select Movie"%}
+                </div>
+
+
+                <div class="form__group">
+                    <label for="user_name">User Signed In</label>
+                    {% render_field form.user class="input" placeholder="Select User" %}
+                </div>
+
+                <div class="form__group">
+                    <label for="review">Review</label>
+                    {% render_field form.review class="textarea" rows="3" placeholder="Feel free to drop down something"%}
+                </div>
+
+                <div class="form__group">
+                    <label for="movie_rating">Your Rating</label>
+                    {% render_field form.rating class="input" placeholder="Enter Rating Number" %}
+                </div>
+                <br>
+                <div class="form__action">
+                    <button class="btn btn--main" type="submit">
+                        <span>Submit</span>
+                    </button>
+                    <button class="btn btn--main" type="reset">
+                        <span>Cancel</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}

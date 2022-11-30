@@ -54,7 +54,7 @@ ROOT_URLCONF = 'Biyan_Huang.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'yanness/templates']
+        'DIRS': [BASE_DIR / 'yanness/templates/yanness']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

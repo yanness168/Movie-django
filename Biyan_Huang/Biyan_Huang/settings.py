@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "yanness.apps.YannessConfig",
     "widget_tweaks",
+    "register.apps.RegisterConfig"
 ]
 
 MIDDLEWARE = [

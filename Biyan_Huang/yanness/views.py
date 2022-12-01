@@ -64,7 +64,7 @@ def deleteMovie(request, id):
         m.delete()
         return redirect('/')
     else:
-        return render(request, 'yanness/deleteMovie.html', {'m': m, 'title': 'Deleting...'})
+        return render(request, 'movie/deleteMovie.html', {'m': m, 'title': 'Deleting...'})
 
 
 def addReview(request):

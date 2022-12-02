@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from .forms import movieForm, reviewForm
 from .models import Movie, Review
 
@@ -19,6 +20,7 @@ def displayById(request, id):
     return render(request, "movie/byID.html", {"title": m.name, "item": m, "reviews": reviews})
 
 
+@login_required
 def addMovie(request):
     # Create movie form object
     form = movieForm()
@@ -38,6 +40,7 @@ def addMovie(request):
     return render(request, 'movie/addMovie.html', context)
 
 
+@login_required
 def editMovie(request, id):
     movie = Movie.objects.get(id=id)
     form = movieForm(instance=movie)
@@ -58,6 +61,7 @@ def editMovie(request, id):
     return render(request, 'movie/editMovie.html', context)
 
 
+@login_required
 def deleteMovie(request, id):
     m = Movie.objects.get(id=id)
     if request.method == 'POST':
@@ -67,9 +71,11 @@ def deleteMovie(request, id):
         return render(request, 'movie/deleteMovie.html', {'m': m, 'title': 'Deleting...'})
 
 
+@login_required
 def addReview(request):
     # Create movie form object
     form = reviewForm()
+    raise_exception = True
     # When form submitted
     if request.method == 'POST':
         m = Movie.objects.get(id=request.POST.get('movie'))
@@ -88,31 +94,39 @@ def addReview(request):
     return render(request, 'review/addReview.html', context)
 
 
+@login_required
 def editReview(request, id):
     review = Review.objects.get(id=id)
     form = reviewForm(instance=review)
     # When form submitted get values
     if request.method == 'POST':
-        # Update model based on form values
-        review.name = Movie.objects.get(id=request.POST.get('movie'))
-        review.user = User.objects.get(id=request.POST.get('user'))
-        review.review = request.POST.get('review')
-        review.rating = request.POST.get('rating')
-        # Save model in db
-        review.save()
-        # Redirect to hom
-        return redirect('/')
+        if request.user == review.user:
+            # Update model based on form values
+            review.name = Movie.objects.get(id=request.POST.get('movie'))
+            review.user = User.objects.get(id=request.POST.get('user'))
+            review.review = request.POST.get('review')
+            review.rating = request.POST.get('rating')
+            # Save model in db
+            review.save()
+            # Redirect to hom
+            return redirect('/')
+        else:
+            return HttpResponse("<h2>You are not the creator of the review...</h2>")
 
     # Return and render movie form
     context = {'form': form, 'r': review, "title": "Update Your Review"}
     return render(request, 'review/editReview.html', context)
 
 
+@login_required
 def deleteReview(request, id):
     r = Review.objects.get(id=id)
     if request.method == 'POST':
-        r.delete()
-        return redirect('/')
+        if request.user == r.user:
+            r.delete()
+            return redirect('/')
+        else:
+            return HttpResponse("<h2>You are not the creator of the review...</h2>")
     else:
         movie = r.movie
         return render(request, 'review/deleteReview.html', {'r': r, 'title': 'Deleting...', 'movie': movie})

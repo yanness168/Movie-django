@@ -1,6 +1,6 @@
 # Movie Recommendation System
 
-This Django project is a movie recommendation system that suggests movies to users based on their preferences and viewing history. It leverages collaborative filtering and content-based filtering techniques to provide personalized recommendations, aligning with the growing demand for AI-driven personalization in the entertainment industry (as highlighted in the IBM job description for "Student Data and AI Developer").
+This Django project is a movie recommendation system that suggests movies to users based on their preferences and viewing history. It leverages collaborative filtering and content-based filtering techniques to provide personalized recommendations.
 
 ## Features
 
@@ -19,7 +19,6 @@ This Django project is a movie recommendation system that suggests movies to use
 *   **Python:** A versatile programming language widely used in data science and machine learning.
 *   **PostgreSQL:** A powerful open-source relational database management system.
 *   **HTML, CSS, JavaScript:** Front-end technologies for building the user interface.
-*   **Scikit-learn (Optional):** A machine learning library for implementing recommendation algorithms.
 
 ## Getting Started
 
@@ -60,7 +59,3 @@ This Django project is a movie recommendation system that suggests movies to use
 ## Contributing
 
 Contributions are welcome! Feel free to submit pull requests or open issues.
-
-## License
-
-This project is licensed under the MIT License.
